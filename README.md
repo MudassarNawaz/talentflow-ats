@@ -72,7 +72,3 @@ npm run dev
 - JWT authentication & role-based access
 - Gmail SMTP email integration
 - Responsive dark-mode UI
-
-## Live Deployment
-- Frontend: [Vercel URL]
-- Backend: [Render URL]
