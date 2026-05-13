@@ -43,6 +43,8 @@ export const authAPI = {
   uploadResume: (formData) => api.post('/auth/resume', formData, { headers: { 'Content-Type': 'multipart/form-data' } }),
   createUser: (data) => api.post('/auth/create-user', data),
   getUsers: (params) => api.get('/auth/users', { params }),
+  forgotPassword: (data) => api.post('/auth/forgotpassword', data),
+  resetPassword: (token, data) => api.put(`/auth/resetpassword/${token}`, data),
 };
 
 // Jobs

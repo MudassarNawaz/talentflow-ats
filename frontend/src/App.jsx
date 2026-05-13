@@ -10,6 +10,8 @@ import Jobs from './pages/Jobs';
 import JobDetail from './pages/JobDetail';
 import CandidateDashboard from './pages/CandidateDashboard';
 import AdminDashboard from './pages/AdminDashboard';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 import './index.css';
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/reset-password/:token" element={<ResetPassword />} />
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/jobs/:id" element={<JobDetail />} />
               <Route path="/candidate/dashboard" element={
