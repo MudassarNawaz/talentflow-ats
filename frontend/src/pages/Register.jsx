@@ -74,23 +74,21 @@ const Register = () => {
                 <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+92-300-0000000" />
               </div>
             </div>
-            <div className="form-row">
-              <div className="form-group">
-                <label>Password *</label>
-                <div className="input-wrapper">
-                  <HiOutlineLockClosed className="input-icon" />
-                  <input type={showPassword ? 'text' : 'password'} name="password" value={formData.password} onChange={handleChange} placeholder="••••••••" required />
-                  <button type="button" className="input-toggle" onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
-                  </button>
-                </div>
+            <div className="form-group">
+              <label>Password *</label>
+              <div className="input-wrapper">
+                <HiOutlineLockClosed className="input-icon" />
+                <input type={showPassword ? 'text' : 'password'} name="password" value={formData.password} onChange={handleChange} placeholder="••••••••" required />
+                <button type="button" className="input-toggle" onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                </button>
               </div>
-              <div className="form-group">
-                <label>Confirm Password *</label>
-                <div className="input-wrapper">
-                  <HiOutlineLockClosed className="input-icon" />
-                  <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="••••••••" required />
-                </div>
+            </div>
+            <div className="form-group">
+              <label>Confirm Password *</label>
+              <div className="input-wrapper">
+                <HiOutlineLockClosed className="input-icon" />
+                <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="••••••••" required />
               </div>
             </div>
             <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
