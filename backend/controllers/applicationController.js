@@ -161,29 +161,27 @@ exports.updateApplicationStatus = async (req, res, next) => {
     if (notes) application.hrNotes = notes;
     await application.save();
 
-    // Send email notification based on status
-    try {
-      let emailData;
-      switch (status) {
-        case 'Shortlisted':
-          emailData = emailTemplates.shortlisted(application.candidate.name, application.job.title);
-          break;
-        case 'Rejected':
-          emailData = emailTemplates.rejection(application.candidate.name, application.job.title);
-          break;
-        case 'Selected':
-          emailData = emailTemplates.selected(application.candidate.name, application.job.title);
-          break;
-      }
+    // Send email notification based on status in the background
+    let emailData;
+    switch (status) {
+      case 'Shortlisted':
+        emailData = emailTemplates.shortlisted(application.candidate.name, application.job.title);
+        break;
+      case 'Rejected':
+        emailData = emailTemplates.rejection(application.candidate.name, application.job.title);
+        break;
+      case 'Selected':
+        emailData = emailTemplates.selected(application.candidate.name, application.job.title);
+        break;
+    }
 
-      if (emailData) {
-        await sendEmail({
-          to: application.candidate.email,
-          ...emailData,
-        });
-      }
-    } catch (emailErr) {
-      console.log('Email notification failed (non-critical):', emailErr.message);
+    if (emailData) {
+      sendEmail({
+        to: application.candidate.email,
+        ...emailData,
+      }).catch(emailErr => {
+        console.log('Email notification failed (non-critical):', emailErr.message);
+      });
     }
 
     res.json({

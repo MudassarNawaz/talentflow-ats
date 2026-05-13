@@ -17,7 +17,7 @@ const resumeStorage = new CloudinaryStorage({
       folder: 'ats/resumes',
       resource_type: 'raw',
       allowed_formats: ['pdf'],
-      public_id: `resume_${Date.now()}_${file.originalname.replace(/\.[^/.]+$/, '')}`,
+      public_id: `resume_${Date.now()}_${file.originalname}`,
     });
   },
 });
@@ -30,7 +30,7 @@ const coverLetterStorage = new CloudinaryStorage({
       folder: 'ats/cover-letters',
       resource_type: 'raw',
       allowed_formats: ['pdf', 'docx', 'doc'],
-      public_id: `cover_${Date.now()}_${file.originalname.replace(/\.[^/.]+$/, '')}`,
+      public_id: `cover_${Date.now()}_${file.originalname}`,
     });
   },
 });
