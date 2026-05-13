@@ -2,6 +2,14 @@
 
 A professional full-stack web application for automating recruitment across multiple branches.
 
+## 🚀 Live Deployment
+
+**Frontend (Vercel):** https://talentflow-ats-ten.vercel.app  
+**Backend API (Railway):** https://talentflow-ats-production.up.railway.app/api  
+**GitHub Repository:** https://github.com/MudassarNawaz/talentflow-ats
+
+---
+
 ## Tech Stack
 - **Frontend:** React.js (Vite)
 - **Backend:** Node.js + Express.js
@@ -18,7 +26,7 @@ cd backend
 npm install
 
 # Frontend
-cd ../frontend
+cd frontend
 npm install
 ```
 
