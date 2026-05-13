@@ -274,18 +274,17 @@ exports.forgotPassword = async (req, res, next) => {
 
     const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please make a PUT request to: \n\n ${resetUrl}`;
 
-    const emailResult = await sendEmail({
+    sendEmail({
       to: user.email,
       subject: 'Password Reset Token',
       text: message,
-    });
-
-    if (!emailResult.success) {
+    }).catch(async (emailResult) => {
+      // If email fails, unset the token
       user.resetPasswordToken = undefined;
       user.resetPasswordExpire = undefined;
       await user.save({ validateBeforeSave: false });
-      return res.status(500).json({ success: false, message: 'Email could not be sent' });
-    }
+      console.error('Failed to send password reset email:', emailResult.error);
+    });
 
     res.status(200).json({ success: true, message: 'Email sent' });
   } catch (error) {
